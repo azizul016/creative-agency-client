@@ -13,7 +13,7 @@ const UserService = () => {
     const [particularUser, setParticularUser] = useState([])
     console.log(particularUser);
     useEffect(() => {
-        fetch("http://localhost:5000/seeParticularService?email=" + loggedInUser.email)
+        fetch("https://creative-agency-main.herokuapp.com/seeParticularService?email=" + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

@@ -4,17 +4,38 @@ import { useState } from 'react';
 import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 import { Dots } from 'react-preloaders';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+
+
+
+
+const options = [
+    { value: 'pending', label: 'pending' },
+    { value: 'ongoing', label: 'ongoing' },
+    { value: 'done', label: 'done' }
+]
+
+
+
 
 const ServiceList = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext)
     const [showAllData, setShowAllData] = useState([])
     console.log(showAllData);
     useEffect(() => {
-        fetch('http://localhost:5000/seeAllService?')
+        fetch('https://creative-agency-main.herokuapp.com/seeAllService?')
             .then(res => res.json())
             .then(results => setShowAllData(results))
     }, [])
 
+
+    const handleChange = (e, id) => {
+        console.log(e.value, id);
+    }
+
+
+    const defaultOption = options[0];
 
     return (
         <div className="container-fluid">
@@ -46,11 +67,8 @@ const ServiceList = () => {
                                         <td>{showData.email}</td>
                                         <td>{showData.service}</td>
                                         <td>{showData.description}</td>
-                                        <td> <select>
-                                            <option value="Pending">Pending</option>
-                                            <option value="On going">On going</option>
-                                            <option value="Done">Done</option>
-                                            <i className="fas fa-sort-down text-dark"></i></select>
+                                        <td>
+                                            <Dropdown onChange={(e) => { handleChange(e, `${showData._id}`) }} options={options} value={defaultOption} placeholder="Select an option" />
                                         </td>
                                     </tr>
                                 )

@@ -12,7 +12,7 @@ const ParticularUser = ({ particularUser }) => {
                             <img style={{ width: "50px" }} className="card-img-top align-self-center" src={`data:image/jpeg;base64,${newImage.img}`} />
                         </div>
                         <div className="col-md-3">
-                            <button className="btn-primary">pending</button>
+                            <button className="btn-primary">{particularUser.status}</button>
 
                         </div>
                     </div>
