@@ -1,14 +1,15 @@
-.card{
+.card-style{
     border: none !important;
     height: 250px;
     box-sizing: border-box;
     padding: 10px;
     padding-top: 20px;
 }
-.card:hover{
+.card-style:hover{
     box-shadow: 0 0 10px rgb(228, 228, 228);
     box-sizing: border-box;
     padding: 10px;
     padding-top: 20px;
-    /* transform: scale(1.1); */
+    transform: rotate(360deg);
+    transition: transform 2s ease-in-out;
 }

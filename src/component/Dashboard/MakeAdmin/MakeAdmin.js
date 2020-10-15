@@ -15,7 +15,7 @@ const MakeAdmin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('https://creative-agency-main.herokuapp.com/setAdmin', {
+        fetch('http://localhost:5000/setAdmin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(admin)

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
+import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 
 const Review = () => {
+    const { loggedInUser, setLoggedInUser } = useContext(UserContext)
     const [review, setReview] = useState({});
     const [file, setFile] = useState(null);
     console.log(review);
@@ -16,14 +18,17 @@ const Review = () => {
         const newFile = e.target.files[0];
         setFile(newFile);
     }
+
+
     const handleReviewSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('name', review.name);
+        formData.append('newFile', loggedInUser.photo)
+        formData.append('name', loggedInUser.name);
         formData.append('designation', review.designation);
         formData.append('description', review.description);
-        fetch('https://creative-agency-main.herokuapp.com/review', {
+        fetch('http://localhost:5000/review', {
             method: 'POST',
             body: formData
         })
@@ -42,7 +47,7 @@ const Review = () => {
                 <div className="col-md-9">
                     <h4 className="my-5">Order Review</h4>
                     <form action="" onSubmit={handleReviewSubmit}>
-                        <input onBlur={handleBlur} type="text" placeholder="Your name" className="form-control" name="name" />
+                        {loggedInUser.name && <input onBlur={handleBlur} type="text" placeholder="Your name" className="form-control" value={loggedInUser.name} name="name" />}
                         <br />
                         <input onBlur={handleBlur} type="text" placeholder="Company’s name, Designation" className="form-control" name="designation" />
                         <br />

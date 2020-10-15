@@ -8,7 +8,6 @@ import uber from '../../../images/logos/uber.png';
 import netflex from '../../../images/logos/netflix.png';
 import airbuv from '../../../images/logos/airbnb.png';
 import { Link } from 'react-router-dom';
-import ServiceLogo from '../ServiceLogo/ServiceLoge';
 import { UserContext } from '../../../App';
 
 const Header = () => {
@@ -41,8 +40,8 @@ const Header = () => {
                 <div className="container">
                     <nav className="navbar navbar-expand-lg navbar-light row">
                         <div className="col-md-4">
-                            <Link className="navbar-brand" to="/">
-                                <img style={{ height: "45px" }} src={logo} alt="" className="img-fluid" />
+                            <Link className="navbar-brand d-none d-sm-block" to="/">
+                                <img style={{ height: "45px" }} src={logo} alt="" className="img-fluid mt-5" />
                             </Link>
                         </div>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +50,7 @@ const Header = () => {
 
                         <div className="col-md-8">
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul className="navbar-nav ml-auto">
+                                <ul className="navbar-nav mt-4 ml-auto">
                                     <li className="nav-item active">
                                         <Link style={{ fontWeight: 'bold' }} className="nav-link" to="">Home <span className="sr-only">(current)</span></Link>
                                     </li>
@@ -59,10 +58,10 @@ const Header = () => {
                                         <Link style={{ fontWeight: 'bold' }} className="nav-link" to="portfolio">Our Portfolio</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link style={{ fontWeight: 'bold' }} className="nav-link" to="dashboard">Our Team</Link>
+                                        <Link style={{ fontWeight: 'bold' }} className="nav-link" to="dashboard">Dashboard</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link style={{ fontWeight: 'bold' }} className="nav-link" to="contact">Contact Us</Link>
+                                        <Link to="footer" style={{ fontWeight: 'bold' }} className="nav-link" >Contact Us</Link>
                                     </li>
                                     {loggedInUser.name ? <h5 className="p-2">{loggedInUser.name}</h5> : <Link to="/login"><button className="btn button ml-3">LogIn</button></Link>}
                                 </ul>
@@ -87,9 +86,9 @@ const Header = () => {
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-2 col-sm-12 mb-3"><img style={{ height: "30px" }} src={slack} alt="" className="img-fluid" /></div>
                     <div className="col-md-2 col-sm-12 mb-3"><img style={{ height: "30px" }} src={google} alt="" className="img-fluid" /></div>
-                    <div className="col-md-2 col-sm-12 mb-3"><img style={{ height: "30px" }} src={uber} alt="" className="img-fluid" /></div>
-                    <div className="col-md-2 col-sm-12 mb-3"><img style={{ height: "30px" }} src={netflex} alt="" className="img-fluid" /></div>
-                    <div className="col-md-2 col-sm-12 mb-3"><img style={{ height: "30px" }} src={airbuv} alt="" className="img-fluid" /></div>
+                    <div className="col-md-2 col-sm-12 mb-3"><img style={{ height: "33px" }} src={uber} alt="" className="img-fluid" /></div>
+                    <div className="col-md-2 col-sm-12 mb-3"><img style={{ height: "37px" }} src={netflex} alt="" className="img-fluid" /></div>
+                    <div className="col-md-2 col-sm-12 mb-3"><img style={{ height: "35px" }} src={airbuv} alt="" className="img-fluid" /></div>
                 </div>
             </div>
         </header>
@@ -97,10 +96,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
-
-// {
-//     service.map(sv => <ServiceLogo key={sv.id} service={sv}></ServiceLogo>)
-// }

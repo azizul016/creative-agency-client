@@ -15,7 +15,6 @@ const LogIn = () => {
         firebase.initializeApp(firebaseConfig);
     }
 
-    // const [loggedInUser, setLoggedInUser] = useState("")
     const { loggedInUser, setLoggedInUser } = useContext(UserContext)
 
     const history = useHistory();
@@ -26,10 +25,9 @@ const LogIn = () => {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(googleProvider)
             .then(function (result) {
-                const { displayName, email } = result.user;
-                const signInUser = { name: displayName, email }
+                const { displayName, email, photoURL } = result.user;
+                const signInUser = { name: displayName, email, photo: photoURL }
                 setLoggedInUser(signInUser)
-                // setUserToken();
                 history.replace(from);
             }).catch(function (error) {
                 var errorCode = error.code;
@@ -37,14 +35,6 @@ const LogIn = () => {
                 console.log(errorCode, errorMessage);
             });
     }
-
-
-    // const setUserToken = () => {
-    //     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function (idToken) {
-    //         sessionStorage.setItem('token', idToken)
-    //     }).catch(function (error) {
-    //     });
-    // }
 
     return (
         <>

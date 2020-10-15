@@ -3,25 +3,19 @@ import { useState } from 'react';
 import { UserContext } from '../../../App';
 import ParticularUser from '../ParticularUser/ParticularUser';
 import Sidebar from '../Sidebar/Sidebar';
-// import { Lines } from 'react-preloaders';
 import { Circle2 } from 'react-preloaders';
-
 
 const UserService = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext)
-    // const [userService, setUserService] = useState([])
     const [particularUser, setParticularUser] = useState([])
-    console.log(particularUser);
     useEffect(() => {
-        fetch("https://creative-agency-main.herokuapp.com/seeParticularService?email=" + loggedInUser.email)
+        fetch("http://localhost:5000/seeParticularService?email=" + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setParticularUser(data)
             })
     }, [])
-
-
 
     return (
         <>

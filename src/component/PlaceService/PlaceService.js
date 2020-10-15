@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../App';
-import Sidebar from '../Dashboard/Sidebar/Sidebar';
-import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -24,10 +22,12 @@ const PlaceService = () => {
         const newFile = e.target.files[0];
         setFile(newFile);
     }
+
+    //find clicked file from home page;
     const newService = service.find(sv => sv._id === id)
 
     useEffect(() => {
-        fetch("https://creative-agency-main.herokuapp.com/seeService")
+        fetch("http://localhost:5000/seeService")
             .then(res => res.json())
             .then(data => setService(data))
     }, [])
@@ -37,6 +37,7 @@ const PlaceService = () => {
         const formData = new FormData();
         const image = JSON.stringify(newService.image)
         formData.append('file', file);
+        formData.append('status', 'pending');
         formData.append('image', image);
         formData.append('service', newService.title);
         formData.append('price', placeService.price);
@@ -44,7 +45,7 @@ const PlaceService = () => {
         formData.append('name', placeService.name);
         formData.append('description', placeService.description);
 
-        fetch('https://creative-agency-main.herokuapp.com/placeService', {
+        fetch('http://localhost:5000/placeService', {
             method: 'POST',
             body: formData
         })

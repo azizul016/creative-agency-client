@@ -3,8 +3,7 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Home from './component/Home/Home/Home';
 import LogIn from './component/Login/LogIn/LogIn';
@@ -18,6 +17,7 @@ import UserService from './component/Dashboard/UserService/UserService';
 import Review from './component/Dashboard/Review/Review';
 import MakeAdmin from './component/Dashboard/MakeAdmin/MakeAdmin';
 import Order from './component/Dashboard/Order/Order';
+import NotFound from './component/NotFound/NotFound';
 
 export const UserContext = createContext()
 
@@ -56,6 +56,9 @@ function App() {
           </Route>
           <Route path="/review">
             <Review></Review>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
           </Route>
         </Switch>
       </Router>

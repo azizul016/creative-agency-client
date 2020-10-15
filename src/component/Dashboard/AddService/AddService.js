@@ -10,9 +10,8 @@ const AddService = () => {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('title', adminInfo.title);
-        formData.append('price', adminInfo.price);
         formData.append('description', adminInfo.description);
-        fetch('https://creative-agency-main.herokuapp.com/addAdmin', {
+        fetch('http://localhost:5000/addAdmin', {
             method: 'POST',
             body: formData
         })
@@ -57,11 +56,6 @@ const AddService = () => {
                                 <div className="form-group">
                                     <label style={{ fontWeight: "bold" }} htmlFor="">Icon</label>
                                     <input onChange={handleFileChange} type="file" name="file" placeholder="Upload Image" className="form-control" />
-                                </div>
-                                <br />
-                                <div className="col-md-6 mt-4">
-                                    <label style={{ fontWeight: "bold" }} htmlFor="">Price</label>
-                                    <input required onBlur={handleBlur} className="form-control" type="number" name="price" placeholder="Price" id="" />
                                 </div>
                             </div>
                         </div>

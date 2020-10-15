@@ -8,8 +8,6 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
 
-
-
 const options = [
     { value: 'pending', label: 'pending' },
     { value: 'ongoing', label: 'ongoing' },
@@ -17,23 +15,34 @@ const options = [
 ]
 
 
-
-
 const ServiceList = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext)
     const [showAllData, setShowAllData] = useState([])
     console.log(showAllData);
     useEffect(() => {
-        fetch('https://creative-agency-main.herokuapp.com/seeAllService?')
+        fetch('http://localhost:5000/seeAllService?')
             .then(res => res.json())
             .then(results => setShowAllData(results))
     }, [])
 
 
-    const handleChange = (e, id) => {
-        console.log(e.value, id);
-    }
+    const handleChange = (event, id) => {
 
+        fetch(`http://localhost:5000/updateSurviceById/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ status: event.value }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    alert("You have successfully updated an order status")
+                }
+            })
+
+    }
 
     const defaultOption = options[0];
 

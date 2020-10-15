@@ -11,7 +11,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 const Sliders = () => {
 
     return (
-        <div className="slider-bg d-none d-sm-block">
+        <div style={{ marginBottom: '100px' }} className="slider-bg d-none d-sm-block">
             <div className="container pt-5">
                 <h3 className="text-center text-white mb-5">Here are some of <span className="main-color">our works</span></h3>
                 <Swiper

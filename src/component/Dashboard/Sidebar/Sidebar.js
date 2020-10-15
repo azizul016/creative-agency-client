@@ -6,21 +6,12 @@ import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import logo from '../../../images/logos/logo.png';
 import { UserContext } from '../../../App';
-import { useState } from 'react';
 
 const Sidebar = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
-    // const [admin, setAdmin] = useState(false);
-
-    // useEffect(() => {
-    //     fetch(`https://creative-agency-main.herokuapp.com/admin?email${loggedInUser.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setAdmin(data))
-    // }, [])
-
 
     useEffect(() => {
-        fetch(`https://creative-agency-main.herokuapp.com/admin?email=${loggedInUser.email}`)
+        fetch(`http://localhost:5000/admin?email=${loggedInUser.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -38,10 +29,6 @@ const Sidebar = () => {
     }, [])
 
 
-    // console.log("admin", admin);
-
-
-
     return (
         <>
             <Link to="/" >
@@ -52,7 +39,6 @@ const Sidebar = () => {
 
             <div className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4" style={{ height: "100vh" }}>
                 <ul className="list-unstyled">
-
                     {
                         loggedInUser.setUser ? <div className="my-5">
                             <li>

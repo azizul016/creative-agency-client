@@ -9,7 +9,6 @@ const Footer = () => {
                     <div className="col-md-6">
                         <h2>Let us handle your <br /> project, professionally.</h2>
                         <p><small>With well written codes, we build amazing apps for all <br /> platforms, mobile and web apps in general.</small></p>
-
                     </div>
                     <div className="col-md-6">
                         <form action="">
