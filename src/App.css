@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.main-color{
+  color: #5DAD89
+}
+select{
+  border: none !important;
+}
+a{
+  text-decoration: none !important;
+}
