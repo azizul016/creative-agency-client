@@ -20,7 +20,7 @@ const ServiceList = () => {
     const [showAllData, setShowAllData] = useState([])
     console.log(showAllData);
     useEffect(() => {
-        fetch('http://localhost:5000/seeAllService?')
+        fetch('https://creative-agency-main.herokuapp.com/seeAllService?')
             .then(res => res.json())
             .then(results => setShowAllData(results))
     }, [])
@@ -28,7 +28,7 @@ const ServiceList = () => {
 
     const handleChange = (event, id) => {
 
-        fetch(`http://localhost:5000/updateSurviceById/${id}`, {
+        fetch(`https://creative-agency-main.herokuapp.com/updateSurviceById/${id}`, {
             method: 'PATCH',
             body: JSON.stringify({ status: event.value }),
             headers: {

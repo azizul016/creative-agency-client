@@ -27,7 +27,7 @@ const PlaceService = () => {
     const newService = service.find(sv => sv._id === id)
 
     useEffect(() => {
-        fetch("http://localhost:5000/seeService")
+        fetch("https://creative-agency-main.herokuapp.com/seeService")
             .then(res => res.json())
             .then(data => setService(data))
     }, [])
@@ -45,7 +45,7 @@ const PlaceService = () => {
         formData.append('name', placeService.name);
         formData.append('description', placeService.description);
 
-        fetch('http://localhost:5000/placeService', {
+        fetch('https://creative-agency-main.herokuapp.com/placeService', {
             method: 'POST',
             body: formData
         })
