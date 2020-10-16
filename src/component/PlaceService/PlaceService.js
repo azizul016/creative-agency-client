@@ -27,7 +27,7 @@ const PlaceService = () => {
 
     //find clicked file from home page;
     const newService = service.find(sv => sv._id === id)
-
+    console.log(newService);
 
     useEffect(() => {
         fetch("https://creative-agency-main.herokuapp.com/seeService")
@@ -46,7 +46,7 @@ const PlaceService = () => {
         formData.append('price', placeService.price);
         formData.append('email', loggedInUser.email);
         formData.append('name', placeService.name);
-        formData.append('description', placeService.description);
+        formData.append('description', newService.description);
 
         fetch('https://creative-agency-main.herokuapp.com/placeService', {
             method: 'POST',
@@ -78,7 +78,7 @@ const PlaceService = () => {
                             newService && <input required onBlur={handleBlur} className="form-control" type="text" placeholder="Services" name="service" value={newService.title} />
                         }
                         <br />
-                        <textarea required onBlur={handleBlur} className="form-control" placeholder="Project Details" name="description" cols="50" rows="5"></textarea>
+                        {newService && <textarea required onBlur={handleBlur} className="form-control" placeholder="Project Details" value={newService.description} name="description" cols="50" rows="5"></textarea>}
                         <br />
                         <input required onBlur={handleBlur} className="form-control" type="number" placeholder="Price" name="price" />
                         <br />
