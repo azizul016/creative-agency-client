@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="container">
                 <div className="row p-5">
-                    <div className="col-md-6">
+                    <div className="col-md-6 align-item center">
                         <h2>Let us handle your <br /> project, professionally.</h2>
                         <p><small>With well written codes, we build amazing apps for all <br /> platforms, mobile and web apps in general.</small></p>
                     </div>
