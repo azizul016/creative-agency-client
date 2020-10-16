@@ -8,7 +8,7 @@ const FeedBack = () => {
     const [feedBack, setFeedBack] = useState([]);
     const newFeedback = feedBack.slice(0, 6);
     useEffect(() => {
-        fetch('https://creative-agency-main.herokuapp.com/seeReview')
+        fetch('http://localhost:5000/seeReview')
             .then(res => res.json())
             .then(data => setFeedBack(data))
     }, [])

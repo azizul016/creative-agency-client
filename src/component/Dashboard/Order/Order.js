@@ -7,7 +7,7 @@ const Order = () => {
         <div>
             <div className="row">
                 <div className="col-md-3">
-                    <Sidebar></Sidebar>
+
                 </div>
                 <div className="col-md-9">
                     <PlaceService></PlaceService>

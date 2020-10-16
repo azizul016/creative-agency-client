@@ -11,7 +11,7 @@ const Sidebar = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`https://creative-agency-main.herokuapp.com/admin?email=${loggedInUser.email}`)
+        fetch(`http://localhost:5000/admin?email=${loggedInUser.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -37,21 +37,22 @@ const Sidebar = () => {
                 </div>
             </Link>
 
-            <div className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4" style={{ height: "100vh" }}>
+            <div className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4" style={{}}>
                 <ul className="list-unstyled">
                     {
                         loggedInUser.setUser ? <div className="my-5">
-                            <li>
+                            <li className="li-style">
                                 <Link to="/serviceList" className="text-secondary">
                                     <FontAwesomeIcon icon={faHdd} /> <span>Service list admin</span>
+
                                 </Link>
                             </li>
-                            <li>
+                            <li className="li-style">
                                 <Link to="/addService" className="text-secondary">
                                     <FontAwesomeIcon icon={faPlus} /> <span>Add Service</span>
                                 </Link>
                             </li>
-                            <li>
+                            <li className="li-style">
                                 <Link to="/mainAdmin" className="text-secondary" >
                                     <FontAwesomeIcon icon={faUserPlus} /> <span>Make Admin</span>
                                 </Link>
@@ -59,17 +60,17 @@ const Sidebar = () => {
                         </div>
                             :
                             <div>
-                                <li>
-                                    <Link to="/order" className="text-secondary">
+                                <li className="li-style">
+                                    <Link to="/placeService/:id" className="text-secondary">
                                         <FontAwesomeIcon icon={faShoppingCart} /> <span>Order</span>
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="li-style">
                                     <Link to="/serviceListO" className="text-secondary">
                                         <FontAwesomeIcon icon={faHdd} /> <span>Service list user</span>
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="li-style">
                                     <Link to="/review" className="text-secondary">
                                         <FontAwesomeIcon icon={faCommentDots} /> <span>Review</span>
                                     </Link>

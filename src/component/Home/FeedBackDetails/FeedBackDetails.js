@@ -4,7 +4,7 @@ const FeedBackDetails = ({ feedBack }) => {
     const description = feedBack.description;
     const newDescription = description.split(' ').slice(0, 14).join(' ');
     return (
-        <div className="col-md-4 my-3">
+        <div className="col-md-4 col-sm-6 my-3">
             <div style={{ border: '1px solid #BFBFBF' }}>
                 <div className="d-flex justify-content-center align-items-center my-4">
                     <img style={{ width: "60px", borderRadius: "50%" }} className="img-fluid" src={feedBack.newFile} alt="" />

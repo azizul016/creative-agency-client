@@ -9,7 +9,7 @@ const ParticularUser = ({ particularUser }) => {
                     <div className="col-md-8 offset-md-1">
                         <img style={{ width: "50px" }} className="card-img-top align-self-center" src={`data:image/jpeg;base64,${newImage.img}`} />
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 my-3">
                         <button className="btn btn-outline-primary">{particularUser.status}</button>
                     </div>
                 </div>

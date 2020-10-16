@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
+import icon from '../../../images/cloud-upload-outline 1.png';
 
 const Review = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext)
     const [review, setReview] = useState({});
     const [file, setFile] = useState(null);
-    console.log(review);
+
     const handleBlur = (e) => {
         const newReview = { ...review };
         newReview[e.target.name] = e.target.value;
@@ -28,7 +29,7 @@ const Review = () => {
         formData.append('name', loggedInUser.name);
         formData.append('designation', review.designation);
         formData.append('description', review.description);
-        fetch('https://creative-agency-main.herokuapp.com/review', {
+        fetch('http://localhost:5000/review', {
             method: 'POST',
             body: formData
         })
@@ -53,7 +54,14 @@ const Review = () => {
                         <br />
                         <input onBlur={handleBlur} type="text" placeholder="Description" className="form-control" name="description" />
                         <br />
-                        <input onChange={handleFileChange} type="file" name="file" placeholder="file" className="form-control" />
+                        <div class="form-group">
+                            <h6 >Image Upload</h6>
+                            <div className='file-upload'>
+                                <img style={{ width: "20px" }} src={icon} alt="" />
+                                <input onChange={handleFileChange} type="file" />
+                                <p style={{ color: '#009444', margin: '0', marginLeft: '5px' }}>Upload image</p>
+                            </div>
+                        </div>
 
                         <button style={{ backgroundColor: "#111430", padding: "10px 35px" }} type="submit" className="btn  text-white mt-4">Submit</button>
                     </form>
@@ -64,3 +72,5 @@ const Review = () => {
 };
 
 export default Review;
+
+// <input onChange={handleFileChange} type="file" name="file" placeholder="file" className="form-control" />

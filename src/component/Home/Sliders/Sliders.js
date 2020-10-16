@@ -1,47 +1,74 @@
 import React from 'react';
-import './Slider.css'
-import sliderOne from "../../../images/carousel-1.png";
-import sliderTwo from "../../../images/carousel-2.png";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
-import sliderThree from "../../../images/carousel-3.png";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
+import './Slider.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import work1st from "../../../images/work1st.png";
+import work2nd from "../../../images/work2nd.png";
+import work3rd from "../../../images/work3rd.png";
+import work4th from "../../../images/work4th.png";
+import work5th from "../../../images/work5th.png";
+
+
 
 const Sliders = () => {
 
+
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 991 },
+            items: 3,
+            slidesToSlide: 1
+        },
+        tablet: {
+            breakpoint: { max: 991, min: 576 },
+            items: 2,
+            slidesToSlide: 1
+        },
+        mobile: {
+            breakpoint: { max: 576, min: 0 },
+            items: 1,
+            slidesToSlide: 1
+        }
+    };
+
+
     return (
-        <div style={{ marginBottom: '100px' }} className="slider-bg d-none d-sm-block">
-            <div className="container pt-5">
-                <h3 className="text-center text-white mb-5">Here are some of <span className="main-color">our works</span></h3>
-                <Swiper
-                    spaceBetween={15}
-                    slidesPerView={3}
-                    navigation
-                    autoplay={{
-                        delay: 2000,
-                        disableOnInteraction: false
-                    }}
-                    loop={true}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
-                >
-                    <SwiperSlide>
-                        <img style={{ height: '240px', width: '240px' }} className="img-fluid" src={sliderOne} alt="" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img style={{ height: '240px', width: '240px' }} className="img-fluid" src={sliderTwo} alt="" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img style={{ height: '240px', width: '240px' }} className="img-fluid" src={sliderThree} alt="" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img style={{ height: '240px', width: '240px' }} className="img-fluid" src={sliderThree} alt="" />
-                    </SwiperSlide>
-                </Swiper>
+        <section className="slider text-white py-5">
+            <div className="container">
+                <h1>Here are some of our works</h1>
+                <div className="row">
+                    <div className="col-12">
+                        <Carousel
+                            swipeable={false}
+                            draggable={false}
+                            showDots={true}
+                            responsive={responsive}
+                            ssr={true}
+                            infinite={true}
+                            autoPlay={true}
+                            autoPlaySpeed={2000}
+                            keyBoardControl={true}
+                            customTransition="all 1s linear"
+                            transitionDuration={1000}
+                            containerClass="carousel-container"
+                            removeArrowOnDeviceType={["tablet", "mobile"]}
+                            dotListClass="custom-dot-list-style"
+                            itemClass="carousel-item-padding-40-px"
+                            className="py-5"
+                        >
+                            <div className="p-3"><img class="img-fluid" src={work1st} alt="" /></div>
+                            <div className="p-3"><img class="img-fluid" src={work2nd} alt="" /></div>
+                            <div className="p-3"><img class="img-fluid" src={work3rd} alt="" /></div>
+                            <div className="p-3"><img class="img-fluid" src={work4th} alt="" /></div>
+                            <div className="p-3"><img class="img-fluid" src={work5th} alt="" /></div>
+                        </Carousel>
+
+
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
-
 export default Sliders;
+

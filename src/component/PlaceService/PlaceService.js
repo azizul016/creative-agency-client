@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { UserContext } from '../../App';
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import icon from '../../images/cloud-upload-outline 1.png'
+import Sidebar from '../Dashboard/Sidebar/Sidebar';
 
 const PlaceService = () => {
     const { id } = useParams();
@@ -26,8 +28,9 @@ const PlaceService = () => {
     //find clicked file from home page;
     const newService = service.find(sv => sv._id === id)
 
+
     useEffect(() => {
-        fetch("https://creative-agency-main.herokuapp.com/seeService")
+        fetch("http://localhost:5000/seeService")
             .then(res => res.json())
             .then(data => setService(data))
     }, [])
@@ -45,7 +48,7 @@ const PlaceService = () => {
         formData.append('name', placeService.name);
         formData.append('description', placeService.description);
 
-        fetch('https://creative-agency-main.herokuapp.com/placeService', {
+        fetch('http://localhost:5000/placeService', {
             method: 'POST',
             body: formData
         })
@@ -63,7 +66,7 @@ const PlaceService = () => {
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-3">
-
+                    <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-9 mt-5">
                     <form style={{ width: '60%' }} action="" onSubmit={handleSubmit}>
@@ -77,9 +80,16 @@ const PlaceService = () => {
                         <br />
                         <textarea required onBlur={handleBlur} className="form-control" placeholder="Project Details" name="description" cols="50" rows="5"></textarea>
                         <br />
+                        <input required onBlur={handleBlur} className="form-control" type="number" placeholder="Price" name="price" />
+                        <br />
                         <div className="row">
-                            <div className="col-md-6">
-                                <input onChange={handleFileChange} required className="form-control" type="file" name="file" placeholder="Upload File" />
+                            <div class="form-group">
+                                <h6 >Image Upload</h6>
+                                <div className='file-upload'>
+                                    <img style={{ width: "20px" }} src={icon} alt="" />
+                                    <input onChange={handleFileChange} type="file" />
+                                    <p style={{ color: '#009444', margin: '0', marginLeft: '5px' }}>Upload image</p>
+                                </div>
                             </div>
                         </div>
                         <br />
@@ -93,5 +103,14 @@ const PlaceService = () => {
 };
 
 export default PlaceService;
+
+
+
+
+
+
+// <div className="col-md-6">
+// <input onChange={handleFileChange} required className="form-control" type="file" name="file" placeholder="Upload File" />
+// </div>
 
 
