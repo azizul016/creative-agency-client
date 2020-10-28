@@ -1,0 +1,10 @@
+.slider{
+    text-align: center;
+    background: #111430;
+  }
+  .react-multi-carousel-dot button {
+    background: #242A65 ;
+  }
+  .react-multi-carousel-dot--active button {
+    background: #FBD062 !important;
+  }

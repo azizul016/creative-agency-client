@@ -1,0 +1,11 @@
+.footer{
+    background-color:#FBD062;
+}
+.button{
+    background-color:#111430;
+    color: white;
+    padding: 9px 50px;
+}
+.button:hover{
+    color: white;
+}

@@ -1,0 +1,12 @@
+.header{
+    background-color:#FBD062;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+
+}
+.image-padding{
+    box-sizing: border-box;
+    padding: 70px;
+}
+li{
+    padding: 0 10px;
+}
