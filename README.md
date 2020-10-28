@@ -10,6 +10,7 @@ Site is responsive, it has firebase authentication and a collection of e-mails i
 - An user can order service,  set a price and can upload an image as a sample.
 - User can post reviews and see the reviews in home page.
 - User will be able to see their work progress through the status.
+- At first the status is "pending"
 
 ### Admin
 - An admin can add services and make more admins.
