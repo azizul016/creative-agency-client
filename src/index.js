@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Circle2 } from 'react-preloaders';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <Circle2 />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -6,6 +6,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import { Dots } from 'react-preloaders';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import { Table } from 'react-bootstrap';
 
 
 const options = [
@@ -15,9 +16,11 @@ const options = [
 ]
 
 
+
 const ServiceList = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext)
     const [showAllData, setShowAllData] = useState([])
+
     console.log(showAllData);
     useEffect(() => {
         fetch('https://creative-agency-main.herokuapp.com/seeAllService?')
@@ -38,13 +41,17 @@ const ServiceList = () => {
             .then(response => response.json())
             .then(data => {
                 if (data) {
+                    const newData = [...showAllData];
+                    newData.status = data;
+                    setShowAllData(newData)
                     alert("You have successfully updated an order status")
+
                 }
             })
 
     }
 
-    const defaultOption = options[0];
+
 
     return (
         <div className="container-fluid">
@@ -53,21 +60,18 @@ const ServiceList = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-9 col-sm-12">
-                    <table className="table table-borderless">
+                    <table className="table">
                         <thead>
                             <tr>
-                                <th className="text-secondary text-left" scope="col">Sr No</th>
-                                <th className="text-secondary" scope="col">Name</th>
-                                <th className="text-secondary" scope="col">Email</th>
-                                <th className="text-secondary" scope="col">Service</th>
-                                <th className="text-secondary" scope="col">Project Details</th>
-                                <th className="text-secondary" scope="col">Statue</th>
+                                <th>Sr No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Service</th>
+                                <th>Project Details</th>
+                                <th>Statue</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                showAllData.length === 0 && <Dots />
-                            }
                             {
                                 showAllData.map((showData, index) =>
                                     <tr>
@@ -77,11 +81,12 @@ const ServiceList = () => {
                                         <td>{showData.service}</td>
                                         <td>{showData.description}</td>
                                         <td>
-                                            <Dropdown onChange={(e) => { handleChange(e, `${showData._id}`) }} options={options} value={defaultOption} placeholder="Select an option" />
+                                            <Dropdown onChange={(e) => { handleChange(e, `${showData._id}`) }} options={options} value={showData.status} />
                                         </td>
                                     </tr>
                                 )
                             }
+
                         </tbody>
                     </table>
                 </div>
@@ -91,3 +96,37 @@ const ServiceList = () => {
 };
 
 export default ServiceList;
+
+
+
+
+
+// <Table responsive className="table-borderless">
+
+//                         <thead>
+//                             <tr>
+//                                 <th className="text-secondary text-left" scope="col">Sr No</th>
+//                                 <th className="text-secondary" scope="col">Name</th>
+//                                 <th className="text-secondary" scope="col">Email</th>
+//                                 <th className="text-secondary" scope="col">Service</th>
+//                                 <th className="text-secondary" scope="col">Project Details</th>
+//                                 <th className="text-secondary" scope="col">Statue</th>
+//                             </tr>
+//                         </thead>
+//                         <tbody>
+//                             {
+//                                 showAllData.map((showData, index) =>
+//                                     <tr>
+//                                         <td>{index + 1}</td>
+//                                         <td>{showData.name}</td>
+//                                         <td>{showData.email}</td>
+//                                         <td>{showData.service}</td>
+//                                         <td>{showData.description}</td>
+//                                         <td>
+//                                             <Dropdown onChange={(e) => { handleChange(e, `${showData._id}`) }} options={options} value={defaultOption} placeholder="Select an option" />
+//                                         </td>
+//                                     </tr>
+//                                 )
+//                             }
+//                         </tbody>
+//                     </Table>

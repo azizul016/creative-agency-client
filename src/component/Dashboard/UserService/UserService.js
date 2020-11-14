@@ -30,9 +30,6 @@ const UserService = () => {
                         </div>
                         <div className="row">
                             {
-                                particularUser.length === 0 && <Circle2 />
-                            }
-                            {
                                 particularUser.map(user => <ParticularUser key={user._id} particularUser={user}></ParticularUser>)
                             }
                         </div>
